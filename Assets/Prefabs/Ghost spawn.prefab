@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5210073236509091676}
   - component: {fileID: 8536523374240989666}
   - component: {fileID: -6298710065514201795}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ghost spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
