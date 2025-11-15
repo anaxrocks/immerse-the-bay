@@ -1512,11 +1512,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpotlightTrigger
   maxDistance: 10
-  ghostTargetMask:
+  ghostCubeMask:
     serializedVersion: 2
-    m_Bits: 0
-  ghostSpawner: {fileID: 0}
-  spawnPoint: {fileID: 0}
+    m_Bits: 64
+  ghostPrefab: {fileID: 8369116089881778121, guid: 81c247c7a92766143927168d63465381, type: 3}
 --- !u!1 &1620453358
 GameObject:
   m_ObjectHideFlags: 0

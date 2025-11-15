@@ -24,6 +24,7 @@ public class SpotlightTrigger : MonoBehaviour
                 // spawn at object's own spawnPoint
                 Instantiate(ghostPrefab, cube.spawnPoint.position, cube.spawnPoint.rotation);
                 Debug.Log("Spawned ghost at cube's spawn point!");
+                Destroy(cube);
             }
         }
         else
