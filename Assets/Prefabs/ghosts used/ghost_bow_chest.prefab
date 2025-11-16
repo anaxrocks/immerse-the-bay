@@ -145,7 +145,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProximitySphere
   detectionRadius: 1.5
-  dialogueLines: []
+  dialogueLines:
+  - 'Hello there. I saw you coming from across the room. '
+  - 'You have a tiny thread on your sleeve, by the way. '
+  - "Thought you\u2019d want to know. "
+  - "I\u2019m headed to a ghostly gala. "
+  - "I don\u2019t love dancing in a crowd, but I do love mingling. "
+  - "I\u2019m a big talker, don\u2019t get me started. "
   dialogueCooldown: 4
   fadeDuration: 0.5
   pauseDuration: 1

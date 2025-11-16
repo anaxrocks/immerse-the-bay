@@ -169,17 +169,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ProximitySphere
   detectionRadius: 1.5
   dialogueLines:
-  - "Carrot cake is sweet\u2026 but only sweeter with someone who truly gets me."
-  - "Do you like long walks\u2026 or are you more of a hop-and-skip type?"
-  - My sketches are lonely without a heart that colors outside the lines with me.
-  - "Notice the little joys\u2026 or I might have to steal them all for myself!"
-  - "Not just anyone can share my frosting\u2026 only the ones who understand patience."
-  - Can your heart giggle at nonsense but still feel deeply when it matters?
-  - "Some paths are too ordinary\u2026 let's wander where magic hides."
-  - 'Love is like baking: it takes care, attention, and a pinch of sweetness.'
-  - "Do you blush easily? Because I might\u2026 just a little, if you're worthy."
-  - "Some days are for doodles, some days are for daydreams\u2026 are you up for
-    both?"
+  - Hey there! Finally, someone to admire me!
+  - "What\u2019s your name\u2026 wait, I don\u2019t care!"
+  - "I don\u2019t bother with tiny things."
+  - "I\u2019m a big-picture kind of ghost."
+  - "I\u2019m working on my whole afterlife aesthetic."
+  - 'Anyway, stick around if you want. '
   dialogueCooldown: 4
   fadeDuration: 0.5
   pauseDuration: 1

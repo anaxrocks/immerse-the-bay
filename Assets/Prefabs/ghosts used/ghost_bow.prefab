@@ -146,11 +146,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ProximitySphere
   detectionRadius: 1.5
   dialogueLines:
-  - 
-  - 
-  - 
-  - 
-  - 
+  - "Hi\u2026 sorry, I wasn\u2019t expecting anyone."
+  - I never know what to do when someone looks at me.
+  - 'Oh! Your left shoelace is untied! '
+  - "Be careful not to trip! I\u2019m on my way to\u2026"
+  - "Wait\u2026 where was I going again?"
+  - Oh right.. My deathday party. I hate being in the spotlight.
   dialogueCooldown: 4
   fadeDuration: 0.5
   pauseDuration: 1
