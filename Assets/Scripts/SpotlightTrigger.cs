@@ -5,7 +5,7 @@ public class SpotlightTrigger : MonoBehaviour
 {
     public float maxDistance = 10f;
     public LayerMask ghostCubeMask;
-    public LayerMask ghostMask;  // NEW: Add this for detecting ghosts
+    public LayerMask ghostMask;
     public GameObject ghostPrefab;
     public int maxGhosts = 5;
 
@@ -33,6 +33,10 @@ public class SpotlightTrigger : MonoBehaviour
                     GameObject g = Instantiate(ghostPrefab, cube.spawnPoint.position, cube.spawnPoint.rotation);
                     activeGhosts.Add(g.GetComponent<Ghost>());
                     Debug.Log("Spawned ghost!");
+
+                    // ---- NEW: Despawn ghost cube ----
+                    Destroy(cube.gameObject);
+                    lastCubeHit = null;
                 }
                 else
                 {
@@ -50,7 +54,7 @@ public class SpotlightTrigger : MonoBehaviour
         // -------------------------
         RaycastHit ghostHit;
 
-        if (Physics.Raycast(ray, out ghostHit, maxDistance, ghostMask))  // NOW USES ghostMask
+        if (Physics.Raycast(ray, out ghostHit, maxDistance, ghostMask))
         {
             Ghost ghost = ghostHit.collider.GetComponentInParent<Ghost>();
             if (ghost != null)
@@ -60,7 +64,7 @@ public class SpotlightTrigger : MonoBehaviour
             }
         }
 
-        // Clean nulls
+        // Clean up null references
         activeGhosts.RemoveAll(g => g == null);
     }
 }

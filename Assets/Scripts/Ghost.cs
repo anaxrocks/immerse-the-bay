@@ -9,6 +9,7 @@ public class Ghost : MonoBehaviour
     private bool childrenActive = false;
 
     private bool isInNet = false;
+    private bool hasBeenCaught = false;  // NEW: Track if ghost was ever caught
     private Transform target;
     public float smoothSpeed = 10f;
 
@@ -19,7 +20,8 @@ public class Ghost : MonoBehaviour
 
     private void Update()
     {
-        if (!isSeen)
+        // Only fade if ghost has never been caught
+        if (!isSeen && !hasBeenCaught)
         {
             timeSinceSeen += Time.deltaTime;
 
@@ -43,8 +45,12 @@ public class Ghost : MonoBehaviour
     public void GoIntoNet(Transform holdPoint)
     {
         isInNet = true;
+        hasBeenCaught = true;  // NEW: Mark as caught permanently
         target = holdPoint;
         GetComponent<Rigidbody>().isKinematic = true;
+        
+        // Make sure ghost is visible when caught
+        SetChildrenActive(true);
     }
 
     public void AttachToHeart(Transform heart)
@@ -58,6 +64,9 @@ public class Ghost : MonoBehaviour
 
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<Collider>().enabled = false;
+        
+        // Keep ghost visible
+        SetChildrenActive(true);
     }
 
     public void MarkSeen()
