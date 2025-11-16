@@ -33,5 +33,6 @@ public class Ghost : MonoBehaviour
         transform.rotation = heart.rotation;
 
         GetComponent<Rigidbody>().isKinematic = true;
+        GetComponent<Collider>().enabled = false;
     }
 }
