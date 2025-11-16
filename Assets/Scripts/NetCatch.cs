@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class NetCatch : MonoBehaviour
@@ -23,11 +24,8 @@ public class NetCatch : MonoBehaviour
             else
             {
                 // Net already has a ghost → play error sound
-                if (audioSource && fullNetAudio) {
+                if (!audioSource.isPlaying && fullNetAudio && ghost != currentGhost) {
                     audioSource.PlayOneShot(fullNetAudio);
-                }
-                if (audioSource.isPlaying) {
-                    audioSource.enabled = false;
                 }
             }
         }

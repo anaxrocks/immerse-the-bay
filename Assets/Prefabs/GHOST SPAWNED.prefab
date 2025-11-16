@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8718741267122881267, guid: db4a3a0dc7575004e846352791b3e509, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: db4a3a0dc7575004e846352791b3e509, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -64,13 +68,33 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -6773279510657479671, guid: db4a3a0dc7575004e846352791b3e509, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -4819223349682164798, guid: db4a3a0dc7575004e846352791b3e509, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -1905717469394846259, guid: db4a3a0dc7575004e846352791b3e509, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: db4a3a0dc7575004e846352791b3e509, type: 3}
       propertyPath: m_Name
       value: GHOST SPAWNED
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: db4a3a0dc7575004e846352791b3e509, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: db4a3a0dc7575004e846352791b3e509, type: 3}
       propertyPath: m_TagString
       value: ghost
+      objectReference: {fileID: 0}
+    - target: {fileID: 5163519359850732284, guid: db4a3a0dc7575004e846352791b3e509, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -129,6 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 526b4c6bda7324340b689c5fc6d7044a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ghost
+  fadeDelay: 3
+  fadeDuration: 1
   smoothSpeed: 10
 --- !u!54 &3228453539012904979
 Rigidbody:
