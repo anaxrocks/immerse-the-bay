@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f5bbfc7bd27f4a118b4187ac8bb3691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProximitySphere
-  detectionRadius: 3
+  detectionRadius: 1.5
   dialogueLines:
   - "Carrot cake is sweet\u2026 but only sweeter with someone who truly gets me."
   - "Do you like long walks\u2026 or are you more of a hop-and-skip type?"
