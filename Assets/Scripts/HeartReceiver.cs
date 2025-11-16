@@ -7,6 +7,7 @@ public class HeartReceiver : MonoBehaviour
 
     public Transform ghostAttachPoint; // The empty child transform
     public AudioSource matchAudio;
+    public AudioClip[] clips;
     public bool isMatched = false;
     ParticleSystem heartParticles;
     public GameObject mainGhost;
@@ -29,11 +30,13 @@ public class HeartReceiver : MonoBehaviour
                 if (IsCorrectGhost(currentGhost.gameObject))
                 {
                     Matchmaking.Instance.MakeMatchAccepted();
+                    matchAudio.clip = clips[0];
                     matchAudio.Play();
                 }
                 else
                 {
                     Matchmaking.Instance.MakeMatchRejected();
+                    matchAudio.clip = clips[1];
                     matchAudio.Play();
                 }
             }
