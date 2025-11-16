@@ -7,19 +7,7 @@ public class ProximitySphere : MonoBehaviour
     public float detectionRadius = 3f;
     
     [Header("Dialogue Configuration")]
-    public string[] dialogueLines = new string[]
-    {
-        "Carrot cake is sweet… but only sweeter with someone who truly gets me.", 
-        "Do you like long walks… or are you more of a hop-and-skip type?",  
-        "My sketches are lonely without a heart that colors outside the lines with me.", 
-        "Notice the little joys… or I might have to steal them all for myself!", 
-        "Not just anyone can share my frosting… only the ones who understand patience.",  
-        "Can your heart giggle at nonsense but still feel deeply when it matters?",
-        "Some paths are too ordinary… let's wander where magic hides.",
-        "Love is like baking: it takes care, attention, and a pinch of sweetness.",
-        "Do you blush easily? Because I might… just a little, if you're worthy.",
-        "Some days are for doodles, some days are for daydreams… are you up for both?"  
-    };
+    public string[] dialogueLines;   // Editable in inspector
     
     [Header("Dialogue Settings")]
     public float dialogueCooldown = 4f; // Seconds between dialogue changes
@@ -40,7 +28,6 @@ public class ProximitySphere : MonoBehaviour
     
     void Start()
     {
-        // Initialize the dialogue pool
         ResetDialoguePool();
     }
     
@@ -85,7 +72,6 @@ public class ProximitySphere : MonoBehaviour
                 
                 if (distance <= detectionRadius)
                 {
-                    // First time entering proximity
                     if (!isPlayerInProximity)
                     {
                         isPlayerInProximity = true;
@@ -96,16 +82,13 @@ public class ProximitySphere : MonoBehaviour
                         currentAlpha = 0f;
                         Debug.Log($"Selected dialogue: {currentDialogue}");
                     }
-                    // Check if it's time to change dialogue
                     else if (fadeState == FadeState.Idle && Time.time - lastDialogueTime >= dialogueCooldown)
                     {
-                        // Start fade out sequence
                         nextDialogue = GetNextDialogue();
                         fadeState = FadeState.FadingOut;
                         stateStartTime = Time.time;
                     }
                     
-                    // Handle fade state machine
                     float stateTime = Time.time - stateStartTime;
                     
                     switch (fadeState)
@@ -122,10 +105,9 @@ public class ProximitySphere : MonoBehaviour
                             break;
                             
                         case FadeState.Paused:
-                            currentAlpha = 0f; // Keep hidden
+                            currentAlpha = 0f;
                             if (stateTime >= pauseDuration)
                             {
-                                // NOW switch the text while invisible
                                 currentDialogue = nextDialogue;
                                 lastDialogueTime = Time.time;
                                 fadeState = FadeState.FadingIn;
@@ -149,7 +131,6 @@ public class ProximitySphere : MonoBehaviour
                             break;
                     }
                     
-                    // Register current dialogue
                     if (!string.IsNullOrEmpty(currentDialogue))
                     {
                         ProximityManager.Instance.RegisterProximity(distance, currentDialogue);
@@ -158,7 +139,6 @@ public class ProximitySphere : MonoBehaviour
                 }
                 else
                 {
-                    // Player left proximity
                     if (isPlayerInProximity)
                     {
                         isPlayerInProximity = false;

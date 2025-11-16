@@ -83,6 +83,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a1a81379a37d6374897c476e576ba67c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6195499016130153996}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a1a81379a37d6374897c476e576ba67c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 362517198647992694}
   m_SourcePrefab: {fileID: 100100000, guid: a1a81379a37d6374897c476e576ba67c, type: 3}
 --- !u!1 &3104795380586557729 stripped
 GameObject:
@@ -104,7 +107,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -153,3 +156,31 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &362517198647992694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3104795380586557729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f5bbfc7bd27f4a118b4187ac8bb3691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProximitySphere
+  detectionRadius: 3
+  dialogueLines:
+  - "Carrot cake is sweet\u2026 but only sweeter with someone who truly gets me."
+  - "Do you like long walks\u2026 or are you more of a hop-and-skip type?"
+  - My sketches are lonely without a heart that colors outside the lines with me.
+  - "Notice the little joys\u2026 or I might have to steal them all for myself!"
+  - "Not just anyone can share my frosting\u2026 only the ones who understand patience."
+  - Can your heart giggle at nonsense but still feel deeply when it matters?
+  - "Some paths are too ordinary\u2026 let's wander where magic hides."
+  - 'Love is like baking: it takes care, attention, and a pinch of sweetness.'
+  - "Do you blush easily? Because I might\u2026 just a little, if you're worthy."
+  - "Some days are for doodles, some days are for daydreams\u2026 are you up for
+    both?"
+  dialogueCooldown: 4
+  fadeDuration: 0.5
+  pauseDuration: 1
