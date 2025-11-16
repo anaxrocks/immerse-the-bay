@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public class SpotlightTrigger : MonoBehaviour
 {
+    public Transform targetToFace;   // assign the player/camera here
+
     public float maxDistance = 10f;
     public LayerMask ghostCubeMask;
     public LayerMask ghostMask;
@@ -34,7 +36,20 @@ public class SpotlightTrigger : MonoBehaviour
                     GameObject prefab = GetRandomGhostPrefab();
                     if (prefab != null)
                     {
-                        GameObject g = Instantiate(prefab, cube.spawnPoint.position, cube.spawnPoint.rotation);
+                       GameObject g = Instantiate(prefab, cube.spawnPoint.position, Quaternion.identity);
+
+                        if (targetToFace != null)
+                        {
+                            Vector3 lookPos = targetToFace.position;
+                            lookPos.y = g.transform.position.y; // keep upright
+                            g.transform.LookAt(lookPos);
+                        }
+                        else
+                        {
+                            Debug.LogWarning("targetToFace not assigned!");
+                        }
+
+
                         activeGhosts.Add(g.GetComponent<Ghost>());
                         Debug.Log("Spawned ghost: " + g.name);
 
