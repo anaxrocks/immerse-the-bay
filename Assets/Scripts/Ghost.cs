@@ -6,7 +6,7 @@ public class Ghost : MonoBehaviour
 
     private float timeSinceSeen = 0f;
     private bool isSeen = false;
-    private bool childrenActive = false;
+    public bool childrenActive = false;
 
     private bool isInNet = false;
     private bool hasBeenCaught = false;  // NEW: Track if ghost was ever caught
