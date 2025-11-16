@@ -15,7 +15,7 @@ public class GhostAudio : MonoBehaviour
     {
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.spatialBlend = 1f;  // 3D sound
-        player = GameObject.FindWithTag("Player").transform;
+        player = GameObject.FindWithTag("MainCamera").transform;
 
         StartCoroutine(PlayRandomSounds());
     }
