@@ -231,7 +231,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 2}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &244041660
 MonoBehaviour:
@@ -1139,8 +1139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProximitySphere
   detectionRadius: 4
-  personaDescription: You are a wise ancient sphere who speaks in riddles and offers
-    philosophical advice to travelers.
+  personaDescription: You are a guy that likes to bake bread
   dialogueCooldown: 5
 --- !u!1 &566101179
 GameObject:
@@ -1703,8 +1702,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProximitySphere
   detectionRadius: 4
-  personaDescription: You are a wise ancient sphere who speaks in riddles and offers
-    philosophical advice to travelers.
+  personaDescription: You are a girl who wants to find love. You like the outdoors
+    and picnics
   dialogueCooldown: 5
 --- !u!1 &921639543
 GameObject:

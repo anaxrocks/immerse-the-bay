@@ -50,7 +50,7 @@ public class Usage
 public class ChatGPTManager : MonoBehaviour
 {
     [Header("API Configuration")]
-    [SerializeField] private string apiKey = "INSERT API KEY";
+    [SerializeField] private string apiKey = "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";
     [SerializeField] private string model = "gpt-4o-mini";
     
     private const string API_URL = "https://api.openai.com/v1/chat/completions";
