@@ -18,6 +18,7 @@
 - Meta Quest 3
 - Unity 
 - VS Code
+- Garage Band
 - Chat GPT
 - Claude
 - Moonlake AI
