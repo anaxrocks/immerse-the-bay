@@ -25,7 +25,7 @@ public class Match : MonoBehaviour
             isMatched = true;
             print("Ghost matched!");
             matchAudio.Play();
-            // heartParticles.Play();
+            // heartParticles.Play(); 
         }
     }
 }
