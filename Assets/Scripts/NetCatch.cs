@@ -10,7 +10,6 @@ public class NetCatch : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("[x] COLLIDED");
         if (other.CompareTag("ghost"))
         {
             Ghost ghost = other.GetComponent<Ghost>();
@@ -24,15 +23,18 @@ public class NetCatch : MonoBehaviour
             else
             {
                 // Net already has a ghost → play error sound
-                if (audioSource && fullNetAudio)
+                if (audioSource && fullNetAudio) {
                     audioSource.PlayOneShot(fullNetAudio);
+                }
+                if (audioSource.isPlaying) {
+                    audioSource.enabled = false;
+                }
             }
         }
     }
 
     void CatchGhost(Ghost ghost)
     {
-        Debug.Log("CAUGHT");
         currentGhost = ghost;
         ghost.GoIntoNet(netHoldPoint);
     }
