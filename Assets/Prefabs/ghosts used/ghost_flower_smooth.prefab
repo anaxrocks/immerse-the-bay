@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8718741267122881267, guid: a1a81379a37d6374897c476e576ba67c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a1a81379a37d6374897c476e576ba67c, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -64,9 +68,65 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -6773279510657479671, guid: a1a81379a37d6374897c476e576ba67c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -4819223349682164798, guid: a1a81379a37d6374897c476e576ba67c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -3288601718500834973, guid: a1a81379a37d6374897c476e576ba67c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -1905717469394846259, guid: a1a81379a37d6374897c476e576ba67c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -1761392301282148320, guid: a1a81379a37d6374897c476e576ba67c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -801246432712067108, guid: a1a81379a37d6374897c476e576ba67c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a1a81379a37d6374897c476e576ba67c, type: 3}
       propertyPath: m_Name
       value: ghost_flower_smooth
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a1a81379a37d6374897c476e576ba67c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a1a81379a37d6374897c476e576ba67c, type: 3}
+      propertyPath: m_TagString
+      value: ghost
+      objectReference: {fileID: 0}
+    - target: {fileID: 1010206797519505868, guid: a1a81379a37d6374897c476e576ba67c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831513966448349175, guid: a1a81379a37d6374897c476e576ba67c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5163519359850732284, guid: a1a81379a37d6374897c476e576ba67c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6428963547085589731, guid: a1a81379a37d6374897c476e576ba67c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013099432040996905, guid: a1a81379a37d6374897c476e576ba67c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532532023426132065, guid: a1a81379a37d6374897c476e576ba67c, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -128,6 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ghost
   fadeDelay: 3
+  childrenActive: 0
   smoothSpeed: 10
 --- !u!54 &6195499016130153996
 Rigidbody:
@@ -168,7 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f5bbfc7bd27f4a118b4187ac8bb3691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProximitySphere
-  detectionRadius: 1.5
+  detectionRadius: 1.2
   dialogueLines:
   - "Hi, oops! Uh\u2026 sorry if I floated right past you\u2026"
   - "I, um\u2026 didn\u2019t mean to, my apologies!"
@@ -179,3 +240,4 @@ MonoBehaviour:
   dialogueCooldown: 4
   fadeDuration: 0.5
   pauseDuration: 1
+  dialogueCompleted: 0

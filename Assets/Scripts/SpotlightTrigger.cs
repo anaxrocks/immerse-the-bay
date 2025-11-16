@@ -6,7 +6,8 @@ public class SpotlightTrigger : MonoBehaviour
     public float maxDistance = 10f;
     public LayerMask ghostCubeMask;
     public LayerMask ghostMask;
-    public GameObject ghostPrefab;
+
+    public GameObject[] ghostPrefabs;   // NEW: list of ghost types
     public int maxGhosts = 5;
 
     private GhostCube lastCubeHit;
@@ -30,13 +31,17 @@ public class SpotlightTrigger : MonoBehaviour
 
                 if (activeGhosts.Count < maxGhosts)
                 {
-                    GameObject g = Instantiate(ghostPrefab, cube.spawnPoint.position, cube.spawnPoint.rotation);
-                    activeGhosts.Add(g.GetComponent<Ghost>());
-                    Debug.Log("Spawned ghost!");
+                    GameObject prefab = GetRandomGhostPrefab();
+                    if (prefab != null)
+                    {
+                        GameObject g = Instantiate(prefab, cube.spawnPoint.position, cube.spawnPoint.rotation);
+                        activeGhosts.Add(g.GetComponent<Ghost>());
+                        Debug.Log("Spawned ghost: " + g.name);
 
-                    // ---- NEW: Despawn ghost cube ----
-                    Destroy(cube.gameObject);
-                    lastCubeHit = null;
+                        // Despawn ghost cube
+                        Destroy(cube.gameObject);
+                        lastCubeHit = null;
+                    }
                 }
                 else
                 {
@@ -59,12 +64,25 @@ public class SpotlightTrigger : MonoBehaviour
             Ghost ghost = ghostHit.collider.GetComponentInParent<Ghost>();
             if (ghost != null)
             {
-                Debug.Log($"Spotlight hitting ghost: {ghost.gameObject.name}");
                 ghost.MarkSeen();
             }
         }
 
         // Clean up null references
         activeGhosts.RemoveAll(g => g == null);
+    }
+
+    // -------------------------
+    // Select random ghost prefab
+    // -------------------------
+    private GameObject GetRandomGhostPrefab()
+    {
+        if (ghostPrefabs == null || ghostPrefabs.Length == 0)
+        {
+            Debug.LogError("No ghost prefabs assigned in SpotlightTrigger!");
+            return null;
+        }
+
+        return ghostPrefabs[Random.Range(0, ghostPrefabs.Length)];
     }
 }

@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HeartReceiver : MonoBehaviour
@@ -8,7 +9,8 @@ public class HeartReceiver : MonoBehaviour
     public AudioSource matchAudio;
     public bool isMatched = false;
     ParticleSystem heartParticles;
-    public Ghost mainGhost;
+    public GameObject mainGhost;
+    public GameObject currentGhost;
     private void OnTriggerEnter(Collider other)
     {
         NetCatch net = other.GetComponent<NetCatch>();
@@ -19,18 +21,20 @@ public class HeartReceiver : MonoBehaviour
             {
                 isMatched = true;
                 print("Ghost matched!");
-                matchAudio.Play();
 
-                Matchmaking.Instance.SetCurrentGhosts(mainGhost, net.currentGhost);
+                Matchmaking.Instance.SetCurrentGhosts(mainGhost.GetComponent<Ghost>(), net.currentGhost);
+                currentGhost = net.currentGhost.gameObject;
                 net.ReleaseGhostToHeart(ghostAttachPoint);
 
-                if (IsCorrectGhost(net.currentGhost.gameObject))
+                if (IsCorrectGhost(currentGhost.gameObject))
                 {
                     Matchmaking.Instance.MakeMatchAccepted();
+                    matchAudio.Play();
                 }
                 else
                 {
                     Matchmaking.Instance.MakeMatchRejected();
+                    matchAudio.Play();
                 }
             }
         }

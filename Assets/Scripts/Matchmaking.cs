@@ -57,7 +57,7 @@ public class Matchmaking : MonoBehaviour
         if (currentCaughtGhost != null)
         {
             // Destroy
-            Destroy(currentCaughtGhost.gameObject);
+            StartCoroutine(FadeAndDestroy(currentCaughtGhost.gameObject));
             currentCaughtGhost = null;
         }
         
@@ -146,6 +146,57 @@ public class Matchmaking : MonoBehaviour
         }
     }
     
+    private IEnumerator FadeAndDestroy(GameObject rootGhost, float duration = 1.5f)
+{
+    if (rootGhost == null) yield break;
+
+    // Get all renderers in ghost + children
+    Renderer[] renderers = rootGhost.GetComponentsInChildren<Renderer>();
+    float elapsed = 0f;
+
+    // Cache original colors
+    Material[][] materials = new Material[renderers.Length][];
+    Color[][] originalColors = new Color[renderers.Length][];
+
+    for (int i = 0; i < renderers.Length; i++)
+    {
+        materials[i] = renderers[i].materials;
+        originalColors[i] = new Color[materials[i].Length];
+
+        for (int m = 0; m < materials[i].Length; m++)
+        {
+            originalColors[i][m] = materials[i][m].color;
+
+            // IMPORTANT: enable fade mode so alpha works
+            materials[i][m].SetFloat("_Surface", 1); // URP Lit = Transparent
+            materials[i][m].SetFloat("_Blend", 0);
+            materials[i][m].renderQueue = 3000;
+        }
+    }
+
+    // Fade out
+    while (elapsed < duration)
+    {
+        elapsed += Time.deltaTime;
+        float t = elapsed / duration;
+
+        for (int r = 0; r < renderers.Length; r++)
+        {
+            for (int m = 0; m < materials[r].Length; m++)
+            {
+                Color c = originalColors[r][m];
+                c.a = Mathf.Lerp(1f, 0f, t);
+                materials[r][m].color = c;
+            }
+        }
+
+        yield return null;
+    }
+
+    Destroy(rootGhost);
+}
+
+
     private void GameOver()
     {
         Debug.Log("Game Over!");

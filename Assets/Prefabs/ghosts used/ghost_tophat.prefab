@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8718741267122881267, guid: 10636575b457ee8489ca04d9ce9f0c3a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 10636575b457ee8489ca04d9ce9f0c3a, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -64,9 +68,45 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -6773279510657479671, guid: 10636575b457ee8489ca04d9ce9f0c3a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -6513874386161228038, guid: 10636575b457ee8489ca04d9ce9f0c3a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -4819223349682164798, guid: 10636575b457ee8489ca04d9ce9f0c3a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -1905717469394846259, guid: 10636575b457ee8489ca04d9ce9f0c3a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -840637783616347099, guid: 10636575b457ee8489ca04d9ce9f0c3a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 10636575b457ee8489ca04d9ce9f0c3a, type: 3}
       propertyPath: m_Name
       value: ghost_tophat
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 10636575b457ee8489ca04d9ce9f0c3a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 10636575b457ee8489ca04d9ce9f0c3a, type: 3}
+      propertyPath: m_TagString
+      value: ghost
+      objectReference: {fileID: 0}
+    - target: {fileID: 1806455235375228090, guid: 10636575b457ee8489ca04d9ce9f0c3a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5163519359850732284, guid: 10636575b457ee8489ca04d9ce9f0c3a, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -127,6 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ghost
   fadeDelay: 3
+  childrenActive: 0
   smoothSpeed: 10
 --- !u!54 &634925967716710877
 Rigidbody:
@@ -167,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f5bbfc7bd27f4a118b4187ac8bb3691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProximitySphere
-  detectionRadius: 1.5
+  detectionRadius: 1.2
   dialogueLines:
   - "Oh\u2026 were you standing there the whole time? "
   - "That\u2019s awkward.. Well, whatever.  "
@@ -178,3 +219,4 @@ MonoBehaviour:
   dialogueCooldown: 4
   fadeDuration: 0.5
   pauseDuration: 1
+  dialogueCompleted: 0
