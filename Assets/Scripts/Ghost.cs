@@ -27,6 +27,7 @@ public class Ghost : MonoBehaviour
     {
         isInNet = false;
         target = null;
+
         transform.SetParent(heart);
         transform.position = heart.position;
         transform.rotation = heart.rotation;

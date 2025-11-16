@@ -37,11 +37,11 @@ public class NetCatch : MonoBehaviour
         ghost.GoIntoNet(netHoldPoint);
     }
 
-    public void ReleaseGhostToHeart(Transform heartTransform)
+    public void ReleaseGhostToHeart(Transform heartAttachPoint)
     {
         if (currentGhost != null)
         {
-            currentGhost.AttachToHeart(heartTransform);
+            currentGhost.AttachToHeart(heartAttachPoint);
             currentGhost = null;
         }
     }
