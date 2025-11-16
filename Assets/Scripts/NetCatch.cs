@@ -5,6 +5,7 @@ public class NetCatch : MonoBehaviour
 {
     public Transform netHoldPoint;
     public AudioClip fullNetAudio;
+    public AudioClip whooshAudio;
     public AudioSource audioSource;
 
     [HideInInspector] public Ghost currentGhost;
@@ -21,6 +22,7 @@ public class NetCatch : MonoBehaviour
 
             if (currentGhost == null)
             {
+                audioSource.PlayOneShot(whooshAudio);
                 CatchGhost(ghost);
             }
             else
@@ -29,10 +31,6 @@ public class NetCatch : MonoBehaviour
                 if (!audioSource.isPlaying && fullNetAudio && ghost != currentGhost)
                 {
                     audioSource.PlayOneShot(fullNetAudio);
-                }
-                if (audioSource.isPlaying)
-                {
-                    audioSource.enabled = false;
                 }
             }
         }

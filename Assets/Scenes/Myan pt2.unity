@@ -731,7 +731,7 @@ GameObject:
   - component: {fileID: 386568687}
   m_Layer: 0
   m_Name: CenterEyeAnchor
-  m_TagString: Player
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1798,7 +1798,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 3a5f208f02a602d4c9b32fbcd6095d1e, type: 3}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2973,6 +2973,7 @@ MonoBehaviour:
   - {fileID: 3104795380586557729, guid: aa1c2ba71bcaa1a4695be1025241546f, type: 3}
   - {fileID: 3961888012027349307, guid: 1d46d61d08f98b84da1066f1c607b473, type: 3}
   - {fileID: 8836323593433135477, guid: 0f273f2c99193344aa321c2cc8dfa15a, type: 3}
+  maxGhosts: 5
 --- !u!1 &1620453358
 GameObject:
   m_ObjectHideFlags: 0
@@ -3629,7 +3630,7 @@ MonoBehaviour:
   minDistance: 0.75
   maxDistance: 3
   minHeight: 1
-  maxHeight: 2
+  maxHeight: 2.5
   randomRotation: 0
   spawnOnStart: 1
 --- !u!4 &2048745505
