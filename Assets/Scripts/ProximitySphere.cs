@@ -7,23 +7,27 @@ public class ProximitySphere : MonoBehaviour
     public float detectionRadius = 3f;
     
     [Header("Dialogue Configuration")]
-    public string[] dialogueLines;   // Editable in inspector
+    public string[] dialogueLines;
     
     [Header("Dialogue Settings")]
-    public float dialogueCooldown = 4f; // Seconds between dialogue changes
-    public float fadeDuration = 0.5f; // Seconds for fade in/out
-    public float pauseDuration = 1f; // Seconds to wait between fade out and fade in
-    
+    public float dialogueCooldown = 4f;
+    public float fadeDuration = 0.5f;
+    public float pauseDuration = 1f;
+
+    public bool dialogueCompleted = false;
+
     private float lastDialogueTime = -999f;
     private string currentDialogue = "";
     private string nextDialogue = "";
     private bool isPlayerInProximity = false;
-    
+
     private enum FadeState { Idle, FadingOut, Paused, FadingIn }
     private FadeState fadeState = FadeState.Idle;
     private float stateStartTime = 0f;
-    
+
     private List<string> remainingDialogues;
+    private int dialoguesShown = 0;
+
     private float currentAlpha = 0f;
     
     void Start()
@@ -34,18 +38,6 @@ public class ProximitySphere : MonoBehaviour
     void ResetDialoguePool()
     {
         remainingDialogues = new List<string>(dialogueLines);
-        ShuffleList(remainingDialogues);
-    }
-    
-    void ShuffleList(List<string> list)
-    {
-        for (int i = list.Count - 1; i > 0; i--)
-        {
-            int j = Random.Range(0, i + 1);
-            string temp = list[i];
-            list[i] = list[j];
-            list[j] = temp;
-        }
     }
     
     string GetNextDialogue()
@@ -54,9 +46,16 @@ public class ProximitySphere : MonoBehaviour
         {
             ResetDialoguePool();
         }
-        
+
         string dialogue = remainingDialogues[0];
         remainingDialogues.RemoveAt(0);
+
+        dialoguesShown++;
+        if (dialoguesShown >= dialogueLines.Length)
+        {
+            dialogueCompleted = true;
+        }
+
         return dialogue;
     }
     

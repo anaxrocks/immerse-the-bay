@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class NetCatch : MonoBehaviour
 {
-    public Transform netHoldPoint; // where ghost stick to
-    public AudioClip fullNetAudio; // warning audio
+    public Transform netHoldPoint;
+    public AudioClip fullNetAudio;
     public AudioSource audioSource;
 
     [HideInInspector] public Ghost currentGhost;
@@ -16,15 +16,17 @@ public class NetCatch : MonoBehaviour
             Ghost ghost = other.GetComponent<Ghost>();
             if (ghost == null) return;
 
+            ProximitySphere ps = ghost.GetComponent<ProximitySphere>();
+            if (ps != null && !ps.dialogueCompleted) return;
+
             if (currentGhost == null)
             {
-                // First ghost → catch it!
                 CatchGhost(ghost);
             }
             else
             {
-                // Net already has a ghost → play error sound
-                if (!audioSource.isPlaying && fullNetAudio && ghost != currentGhost) {
+                if (!audioSource.isPlaying && fullNetAudio && ghost != currentGhost)
+                {
                     audioSource.PlayOneShot(fullNetAudio);
                 }
             }
