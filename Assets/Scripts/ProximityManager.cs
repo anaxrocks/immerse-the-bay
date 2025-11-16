@@ -18,6 +18,7 @@ public class ProximityManager : MonoBehaviour
     private CanvasGroup canvasGroup;
     private float targetAlpha = 0f;
     private bool hasActiveProximity = false;
+    private float dialogueAlpha = 1f; // For fade in/out transitions
     
     void Awake()
     {
@@ -27,13 +28,12 @@ public class ProximityManager : MonoBehaviour
     void Start()
     {
         playerTransform = Camera.main.transform;
-
+        
         if (proximityText != null)
         {
             canvasGroup = proximityText.GetComponent<CanvasGroup>();
             if (canvasGroup == null)
                 canvasGroup = proximityText.gameObject.AddComponent<CanvasGroup>();
-
             canvasGroup.alpha = 0f;
         }
     }
@@ -41,37 +41,41 @@ public class ProximityManager : MonoBehaviour
     void LateUpdate()
     {
         hasActiveProximity = !string.IsNullOrEmpty(currentText);
-
+        
         if (hasActiveProximity)
         {
             lastText = currentText;
         }
-
+        
         if (canvasGroup != null)
         {
             // Calculate target alpha based on distance
             if (hasActiveProximity)
             {
+                float distanceAlpha;
                 if (closestDistance <= fadeStartDistance)
-                    targetAlpha = 1f;
+                    distanceAlpha = 1f;
                 else if (closestDistance >= fadeEndDistance)
-                    targetAlpha = 0f;
+                    distanceAlpha = 0f;
                 else
-                    targetAlpha = 1f - (closestDistance - fadeStartDistance) / (fadeEndDistance - fadeStartDistance);
+                    distanceAlpha = 1f - (closestDistance - fadeStartDistance) / (fadeEndDistance - fadeStartDistance);
+                
+                // Combine distance fade with dialogue fade in/out
+                targetAlpha = distanceAlpha * dialogueAlpha;
             }
             else
             {
                 targetAlpha = 0f;
             }
-
+            
             // Smooth fade
             canvasGroup.alpha = Mathf.Lerp(canvasGroup.alpha, targetAlpha, Time.deltaTime * fadeSpeed);
         }
-
+        
         // Update text content
         if (proximityText != null)
             proximityText.text = lastText;
-
+        
         currentText = "";
         closestDistance = Mathf.Infinity;
     }
@@ -84,7 +88,12 @@ public class ProximityManager : MonoBehaviour
             currentText = text;
         }
     }
-
+    
+    public void SetDialogueAlpha(float alpha)
+    {
+        dialogueAlpha = Mathf.Clamp01(alpha);
+    }
+    
     public Transform GetPlayerTransform()
     {
         return playerTransform;
