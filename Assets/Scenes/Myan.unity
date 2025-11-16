@@ -3625,6 +3625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff40d607471d9741a9b276a9a809c81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HeartReceiver
+  correctGhostPrefab: {fileID: 2619231177239230917, guid: bf3cafd740248c24b9208c679938e143, type: 3}
   ghostAttachPoint: {fileID: 1689340045}
   matchAudio: {fileID: 2093992362}
   isMatched: 0
@@ -3858,6 +3859,7 @@ MonoBehaviour:
   dialogueCooldown: 4
   fadeDuration: 0.5
   pauseDuration: 1
+  dialogueCompleted: 0
 --- !u!1 &562885664626385373
 GameObject:
   m_ObjectHideFlags: 0
