@@ -28,7 +28,8 @@ TagManager:
   - QDSUITextInputField
   - SamplesInfoPanel
   - QDSUIToggleCheckboxRadio
-  - Ghost
+  - ghost
+  - heart
   layers:
   - Default
   - TransparentFX
