@@ -3,17 +3,15 @@ using System.Collections.Generic;
 
 public class SpotlightTrigger : MonoBehaviour
 {
-    public Transform targetToFace;   // assign the player/camera here
+    public Transform targetToFace;
 
     public float maxDistance = 10f;
     public LayerMask ghostCubeMask;
     public LayerMask ghostMask;
 
-    public GameObject[] ghostPrefabs;   // NEW: list of ghost types
-    public int maxGhosts = 5;
+    public GameObject[] ghostPrefabs;
 
     private GhostCube lastCubeHit;
-    private List<Ghost> activeGhosts = new List<Ghost>();
 
     void Update()
     {
@@ -31,36 +29,29 @@ public class SpotlightTrigger : MonoBehaviour
             {
                 lastCubeHit = cube;
 
-                if (activeGhosts.Count < maxGhosts)
+                GameObject prefab = GetRandomGhostPrefab();
+                if (prefab != null)
                 {
-                    GameObject prefab = GetRandomGhostPrefab();
-                    if (prefab != null)
+                    GameObject g = Instantiate(prefab, cube.spawnPoint.position, Quaternion.identity);
+
+                    // Face the player
+                    if (targetToFace != null)
                     {
-                       GameObject g = Instantiate(prefab, cube.spawnPoint.position, Quaternion.identity);
-
-                        if (targetToFace != null)
-                        {
-                            Vector3 lookPos = targetToFace.position;
-                            lookPos.y = g.transform.position.y; // keep upright
-                            g.transform.LookAt(lookPos);
-                        }
-                        else
-                        {
-                            Debug.LogWarning("targetToFace not assigned!");
-                        }
-
-
-                        activeGhosts.Add(g.GetComponent<Ghost>());
-                        Debug.Log("Spawned ghost: " + g.name);
-
-                        // Despawn ghost cube
-                        Destroy(cube.gameObject);
-                        lastCubeHit = null;
+                        Vector3 lookPos = targetToFace.position;
+                        lookPos.y = g.transform.position.y; // keep upright
+                        g.transform.LookAt(lookPos);
+                        g.transform.Rotate(0, -90f, 0); // rotation fix for your prefab facing +X
                     }
-                }
-                else
-                {
-                    Debug.Log("Max ghosts reached!");
+                    else
+                    {
+                        Debug.LogWarning("targetToFace not assigned!");
+                    }
+
+                    Debug.Log("Spawned ghost: " + g.name);
+
+                    // Despawn the cube
+                    Destroy(cube.gameObject);
+                    lastCubeHit = null;
                 }
             }
         }
@@ -70,7 +61,7 @@ public class SpotlightTrigger : MonoBehaviour
         }
 
         // -------------------------
-        // 2. Handle ghost visibility with GHOST LAYER MASK
+        // 2. Ghost visibility via GHOST MASK
         // -------------------------
         RaycastHit ghostHit;
 
@@ -82,19 +73,16 @@ public class SpotlightTrigger : MonoBehaviour
                 ghost.MarkSeen();
             }
         }
-
-        // Clean up null references
-        activeGhosts.RemoveAll(g => g == null);
     }
 
     // -------------------------
-    // Select random ghost prefab
+    // Random ghost prefab
     // -------------------------
     private GameObject GetRandomGhostPrefab()
     {
         if (ghostPrefabs == null || ghostPrefabs.Length == 0)
         {
-            Debug.LogError("No ghost prefabs assigned in SpotlightTrigger!");
+            Debug.LogError("No ghost prefabs assigned!");
             return null;
         }
 

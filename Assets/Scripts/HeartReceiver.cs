@@ -30,13 +30,13 @@ public class HeartReceiver : MonoBehaviour
                 if (IsCorrectGhost(currentGhost.gameObject))
                 {
                     Matchmaking.Instance.MakeMatchAccepted();
-                    matchAudio.clip = clips[0];
+                    matchAudio.clip = clips[1];
                     matchAudio.Play();
                 }
                 else
                 {
                     Matchmaking.Instance.MakeMatchRejected();
-                    matchAudio.clip = clips[1];
+                    matchAudio.clip = clips[0];
                     matchAudio.Play();
                 }
             }
