@@ -19,6 +19,3 @@
 - Unity 
 - VS Code
 - Garage Band
-- Chat GPT
-- Claude
-- Moonlake AI
